@@ -5,17 +5,24 @@
     <meta charset="UTF-8">
     <title>Blogger</title>
 
-    <!-- ربط ملف CSS الصحيح -->
+    <!-- ملف التنسيق الأساسي -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- خط جميل وبسيط -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+    <!-- الشريط العلوي -->
     <nav class="navbar">
-        <a href="{% url 'main:home_view' %}">الرئيسية</a>
-        <a href="{% url 'main:add_post_view' %}">إضافة منشور</a>
+        <div class="nav-container">
+            <a href="{% url 'main:home_view' %}" class="nav-item">الرئيسية</a>
+            <a href="{% url 'main:add_post_view' %}" class="nav-item">إضافة منشور</a>
+        </div>
     </nav>
 
+    <!-- المحتوى -->
     <div class="container">
         {% block content %}
         {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1 class="edit-title">تعديل المنشور</h1>
+
+<form method="post" enctype="multipart/form-data" class="edit-form">
+    {% csrf_token %}
+
+    <label>العنوان:</label>
+    <input type="text" name="title" class="edit-input" value="{{ post.title }}" required>
+
+    <label>المحتوى:</label>
+    <textarea name="content" rows="5" class="edit-textarea" required>{{ post.content }}</textarea>
+
+    <!-- عرض الصورة الحالية -->
+    {% if post.image %}
+        <p>الصورة الحالية:</p>
+        <img src="{{ post.image.url }}" class="post-image" style="max-width: 300px;">
+    {% endif %}
+
+    <label>استبدال الصورة:</label>
+    <input type="file" name="image" class="edit-input">
+
+    <button type="submit" class="edit-btn-save">حفظ التعديل</button>
+</form>
+
+{% endblock %}

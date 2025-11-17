@@ -4,7 +4,7 @@
 
 <h1 class="add-title">إضافة منشور جديد</h1>
 
-<form method="post" class="add-form">
+<form method="post" enctype="multipart/form-data" class="add-form">
     {% csrf_token %}
 
     <label class="add-label">العنوان:</label>
@@ -12,6 +12,10 @@
 
     <label class="add-label">المحتوى:</label>
     <textarea name="content" rows="5" class="add-textarea" required></textarea>
+
+    <!-- رفع صورة -->
+    <label class="add-label">الصورة (اختياري):</label>
+    <input type="file" name="image" class="add-input">
 
     <button type="submit" class="add-button">نشر المنشور</button>
 </form>

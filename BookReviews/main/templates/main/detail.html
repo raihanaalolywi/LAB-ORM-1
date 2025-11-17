@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1 class="detail-title">{{ post.title }}</h1>
+
+<!-- صورة المنشور (إذا موجودة) -->
+{% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+{% endif %}
+
+<p class="detail-content">{{ post.content }}</p>
+
+<p class="detail-date">نُشر في: {{ post.published_at }}</p>
+
+<div class="action-buttons">
+
+    <!-- زر التعديل -->
+    <a href="{% url 'main:edit_post_view' post.id %}" class="edit-btn">
+        تعديل
+    </a>
+
+    <!-- زر الحذف -->
+    <a href="{% url 'main:delete_post_view' post.id %}" 
+       class="delete-btn"
+       onclick="return confirm('هل تريدين حذف هذا المنشور؟');">
+        حذف
+    </a>
+
+</div>
+
+{% endblock %}
